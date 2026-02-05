@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Desenvolvimento de Aplicações Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+  <style>
+    /* Estilo para botão bloqueado */
+.btn-locked {
+  background: #f57c00; /* Laranja para indicar atenção */
+  color: #fff;
+}
+.btn-locked:hover {
+  background: #ef6c00;
+}
+
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f9; color: #333; }
+
+    /* HEADER */
+    header { background: linear-gradient(90deg, #1e3c72, #3a7bd5); color: #fff; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+    header nav a { color: #fff; margin-left: 20px; text-decoration: none; font-weight: 500; }
+
+    /* HERO */
+    #inicio { background: linear-gradient(135deg, #2a5298, #3a7bd5); color: #fff; padding: 80px 40px; }
+    #inicio h1 { font-size: 48px; margin-bottom: 15px; }
+    #inicio button { padding: 12px 20px; font-size: 16px; border-radius: 6px; border: none; cursor: pointer; }
+
+    /* AULAS */
+    #aulas { padding: 40px; }
+    .aulas-box { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+    th { background: #1976d2; color: #fff; }
+    .btn-aula { background: #1976d2; color: #fff; padding: 6px 10px; border-radius: 5px; border: none; cursor: pointer; transition: 0.2s;}
+    .btn-aula:hover { background: #115293; }
+
+    /* SLIDES AREA */
+    #slides { padding: 40px; display: none; background: #111; }
+    .reveal { height: 600px; border-radius: 10px; border: 1px solid #333; }
+    
+    /* Ajuste para visualizar caixas dentro dos slides */
+    .box-model-demo { display: inline-block; background: #fff; color: #000; padding: 10px; margin: 10px; border: 2px solid red; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <strong><i class="fas fa-graduation-cap me-2"></i>UNINASSAU</strong>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#aulas">Aulas</a>
+  </nav>
+</header>
+
+<section id="inicio">
+  <h1>Desenvolvimento de Aplicações Web</h1>
+  <p style="margin-bottom: 10px;">Curso com foco em Front-End e Back-End</p>
+  <button onclick="document.getElementById('aulas').scrollIntoView({behavior:'smooth'})">
+    Ver Aulas
+  </button>
+</section>
+
+<section id="aulas">
+  <div class="aulas-box">
+    <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Conteúdo Programático</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Aula</th>
+          <th>Tema</th>
+          <th>Status</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Introdução + HTML</td>
+          <td>✅ Concluída</td>
+          <td><button class="btn-aula" onclick="abrirAula(0)">Abrir Aula 1</button></td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>CSS (Estilizando o Portfólio)</td>
+        <td id="status-aula-2">🔒 Bloqueada</td> <td>
+        <button class="btn-aula btn-locked" onclick="tentarAbrir(19, 'css2026', 'status-aula-2')">
+        <i class="fas fa-lock"></i> Acessar
+        </button>
+        </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>JavaScript (Interatividade)</td>
+          <td>📅 Em breve</td>
+          <td><button class="btn-aula" disabled style="background:#ccc; cursor:not-allowed;">Aguarde</button></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Publicação e Portfólio</td>
+          <td>📅 Em breve</td>
+          <td><button class="btn-aula" disabled style="background:#ccc; cursor:not-allowed;">Aguarde</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="slides">
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <h2 style="color:#b388ff;">🏛️ UNINASSAU</h2>
+        <h3 style="color:#fff;">Aula 1 – Introdução ao HTML</h3>
+        <p style="color:#aaa;">Construindo a estrutura do site</p>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🎯 Objetivos</h2>
+        <ul>
+          <li>Entender o que é um algoritmo</li>
+          <li>Conhecer Front-end e Back-end</li>
+          <li>Aprender ferramentas (VS Code)</li>
+          <li>Criar o primeiro arquivo HTML</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🧠 Algoritmo</h2>
+        <ul>
+          <li>Algoritmo = passos em ordem.</li>
+          <li>Exemplo: Receita de bolo.</li>
+          <li>Computadores seguem esses passos.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🖥️ Front vs Back</h2>
+        <ul>
+          <li><strong>Front-end:</strong> O que você vê (Tela).</li>
+          <li><strong>Back-end:</strong> O que acontece por trás (Servidor).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🛠️ Ferramentas</h2>
+        <ul>
+          <li>Usaremos o <strong>Visual Studio Code</strong>.</li>
+          <li>Editor de código facilita nossa vida (colore o código).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🧩 VS Code</h2>
+        <ol>
+          <li>Abra o programa.</li>
+          <li>Crie uma pasta na área de trabalho.</li>
+          <li>Arraste a pasta para dentro do VS Code.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">📂 Arquivos</h2>
+        <ul>
+          <li>Todo arquivo tem nome e extensão.</li>
+          <li>Imagens: <code>.jpg</code>, <code>.png</code></li>
+          <li>Sites: <strong><code>.html</code></strong></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">📄 index.html</h2>
+        <ul>
+          <li>O arquivo principal do site SEMPRE se chama <code>index.html</code>.</li>
+          <li>O navegador procura por esse nome automaticamente.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">🌐 O Navegador</h2>
+        <ul>
+          <li>Nós escrevemos o código.</li>
+          <li>O navegador (Chrome/Edge) lê e desenha na tela.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">10. O que é uma tag?</h2>
+        <ul>
+          <li>É um comando entre <strong>&lt;</strong> e <strong>&gt;</strong>.</li>
+          <li>A maioria tem abertura e fechamento.</li>
+          <li>Exemplo: <code style="color: #ffeb3b;">&lt;tag&gt;</code> Conteúdo <code style="color: #ffeb3b;">&lt;/tag&gt;</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">11. O esqueleto obrigatório</h2>
+        <ul>
+          <li><code style="color: #ffeb3b;">&lt;html&gt;</code>: A caixa que guarda tudo.</li>
+          <li><code style="color: #ffeb3b;">&lt;head&gt;</code>: Configurações (o cérebro).</li>
+          <li><code style="color: #ffeb3b;">&lt;body&gt;</code>: O corpo (o que aparece na tela).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">12. Nossas Primeiras Tags</h2>
+        <p>Essas tags ficam DENTRO do body:</p>
+        <ul>
+          <li><code style="color: #ffeb3b;">&lt;h1&gt;</code>: Título Principal.</li>
+          <li><code style="color: #ffeb3b;">&lt;p&gt;</code>: Parágrafo de texto.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">13. Hora de Digitar</h2>
+        <p>Digite isso no seu VS Code:</p>
+        <pre><code class="html">
+<html>
+  <head>
+    <title>Minha Página</title>
+  </head>
+  <body>
+    <h1>Meu Primeiro Site</h1>
+    <p>Olá, mundo! Estou aprendendo HTML.</p>
+  </body>
+</html>
+        </code></pre>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">14. Ver o Resultado</h2>
+        <ul>
+          <li>1. Salve o arquivo (Ctrl + S)</li>
+          <li>2. Abra a pasta</li>
+          <li>3. Clique duas vezes no <strong>index.html</strong></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">15. Ciclo de Mudanças</h2>
+        <ul>
+          <li>Mude o código -> <strong>Salve (Ctrl+S)</strong></li>
+          <li>Vá no Chrome -> <strong>Atualize (F5)</strong></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#ff5252;">16. Erros Comuns</h2>
+        <ul>
+          <li>🚫 Esquecer de Salvar.</li>
+          <li>🚫 Salvar como .txt.</li>
+          <li>🚫 Escrever fora do body.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">17. GitHub</h2>
+        <p>Futuramente usaremos o GitHub para colocar o site na internet.</p>
+      </section>
+
+      <section>
+        <h2 style="color:#b388ff;">18. Parabéns!</h2>
+        <p>Você criou sua primeira página.</p>
+        <p style="color:yellow;">Próximo passo: Deixar ela bonita com CSS.</p>
+      </section>
+
+      <section data-background-color="#2a5298">
+        <h2 style="color:#fff;">🎨 AULA 2: CSS</h2>
+        <h3>Dando vida e cor ao Portfólio</h3>
+        <p>Cascading Style Sheets</p>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">1. O que é CSS?</h2>
+        <ul>
+          <li><strong>HTML</strong> cria o conteúdo (texto, imagens).</li>
+          <li><strong>CSS</strong> cuida da beleza (cores, fontes, posições).</li>
+          <li><em>Analogia: O HTML é o manequim, o CSS é a roupa.</em></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">2. HTML vs CSS</h2>
+        <div style="display:flex; gap:20px;">
+          <div style="flex:1; border:1px solid #555; padding:10px;">
+            <h4>Sem CSS</h4>
+            <h1 style="color:white; font-size:20px;">Título</h1>
+            <p>Texto feio.</p>
+          </div>
+          <div style="flex:1; border:1px solid white; padding:10px; background:white; color:black; border-radius:10px;">
+            <h4 style="color:#333;">Com CSS</h4>
+            <h1 style="color:blue; font-size:20px; text-transform:uppercase;">Título</h1>
+            <p style="font-family:sans-serif;">Texto estiloso.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">3. Onde o CSS fica?</h2>
+        <ul>
+          <li>Pode ficar junto com o HTML (bagunçado).</li>
+          <li><strong>Melhor opção:</strong> Em um arquivo separado.</li>
+          <li>Vamos criar o arquivo: <code>style.css</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">4. Criando o Arquivo</h2>
+        <ol>
+          <li>No VS Code, clique em "Novo Arquivo".</li>
+          <li>Digite o nome: <strong>style.css</strong></li>
+          <li>Agora temos <code>index.html</code> e <code>style.css</code> lado a lado.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">5. Ligando os Pontos</h2>
+        <p>O HTML não adivinha que o CSS existe. Precisamos criar um link.</p>
+        <p>No <code>&lt;head&gt;</code> do HTML, adicione:</p>
+        <pre><code class="html">
+<link rel="stylesheet" href="style.css">
+        </code></pre>
+        <small style="color:#ff5252;">Se não fizer isso, nada funciona!</small>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">6. A Fórmula do CSS</h2>
+        <div style="background:#333; padding:20px; border-radius:10px;">
+          <code style="color:#ffeb3b; font-size: 1.5em;">QUEM { O_QUE: COMO; }</code>
+        </div>
+        <pre><code class="css" style="margin-top:20px;">
+h1 {
+  color: blue;
+}
+        </code></pre>
+        <ul>
+          <li><strong>Seletor (h1):</strong> Quem eu quero mudar.</li>
+          <li><strong>Propriedade (color):</strong> O que eu vou mudar.</li>
+          <li><strong>Valor (blue):</strong> Como vai ficar.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">7. Primeiros Estilos</h2>
+        <p>Vamos testar no arquivo <code>style.css</code>:</p>
+        <pre><code class="css">
+body {
+  background-color: lightblue; /* Fundo da página */
+}
+
+h1 {
+  color: white; /* Cor do texto */
+}
+        </code></pre>
+        <p>Salve e atualize o navegador!</p>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">8. Tipografia (Fontes)</h2>
+        <p>Vamos tirar a "cara de documento antigo".</p>
+        <pre><code class="css">
+body {
+  font-family: Arial, sans-serif;
+}
+        </code></pre>
+        <p>Isso deixa o texto mais moderno e legível.</p>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">9. Espaçamento (Box Model)</h2>
+        <div style="background: white; color: black; padding: 20px; display: inline-block;">
+            <div style="background: orange; padding: 20px; border: 2px solid black;">
+                MARGEM (Fora)
+                <div style="background: lightgreen; padding: 20px;">
+                    PADDING (Dentro)
+                    <div style="background: white; border: 1px dashed black;">CONTEÚDO</div>
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li><strong>Margin:</strong> Empurra os vizinhos.</li>
+            <li><strong>Padding:</strong> Engorda a caixa (preenchimento).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">10. Cores</h2>
+        <ul>
+            <li>Nomes: <code>red</code>, <code>blue</code>, <code>gold</code>.</li>
+            <li>Hexadecimal: <code>#ff0000</code> (mais profissional).</li>
+            <li>Dica: No VS Code, passe o mouse na cor para escolher outra.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">11. O poder das Classes</h2>
+        <p>E se eu quiser estilos diferentes para tags iguais?</p>
+        <p>Usamos <strong>Classes</strong> (Apelidos).</p>
+        <div style="display:flex; gap:10px;">
+            <div style="flex:1;">
+                <p>HTML:</p>
+                <pre><code class="html"><p class="destaque">Oi</p></code></pre>
+            </div>
+            <div style="flex:1;">
+                <p>CSS (Usa ponto):</p>
+                <pre><code class="css">.destaque { color: red; }</code></pre>
+            </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">12. Criando Cards</h2>
+        <p>Vamos criar caixas para o portfólio.</p>
+        <pre><code class="css">
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px; /* Bordas redondas */
+  box-shadow: 2px 2px 5px black; /* Sombra */
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">13. Interatividade (Hover)</h2>
+        <p>Mudar quando passa o mouse:</p>
+        <pre><code class="css">
+.card:hover {
+  background-color: gold;
+  cursor: pointer; /* Mãozinha */
+}
+        </code></pre>
+        <button style="padding:10px; background:white; color:black; border:none; border-radius:5px; cursor:pointer;" onmouseover="this.style.background='gold'" onmouseout="this.style.background='white'">Passe o mouse aqui</button>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">14. Organização</h2>
+        <p>Use comentários para não se perder:</p>
+        <pre><code class="css">
+/* Estilos do Cabeçalho */
+header {
+  background: black;
+}
+
+/* Estilos dos Projetos */
+.card {
+  margin: 10px;
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h2 style="color:#ff5252;">15. Erros Comuns no CSS</h2>
+        <ul>
+            <li>🚫 Esquecer o <strong>;</strong> no final da linha.</li>
+            <li>🚫 Esquecer o <strong>.</strong> antes do nome da classe.</li>
+            <li>🚫 Escrever <code>font-color</code> (o certo é só <code>color</code>).</li>
+            <li>🚫 Não linkar o arquivo no HTML.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:#4fc3f7;">16. Resultado Final</h2>
+        <h3 style="color:white;">Parabéns!</h3>
+        <p>Agora seu portfólio tem:</p>
+        <ul>
+            <li>[x] Cores de fundo e texto</li>
+            <li>[x] Fontes bonitas</li>
+            <li>[x] Cards organizados</li>
+            <li>[x] Efeitos ao passar o mouse</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+
+<script>
+  // Inicializa o Reveal.js
+  const deck = new Reveal(document.querySelector('.reveal'), {
+    embedded: true,
+    slideNumber: 'c/t',
+    hash: false,
+    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+  });
+
+  deck.initialize();
+
+  // Função principal para abrir os slides (uso interno)
+  function abrirAula(indice) {
+    const areaSlides = document.getElementById('slides');
+    areaSlides.style.display = 'block';
+    areaSlides.scrollIntoView({ behavior: 'smooth' });
+    deck.slide(indice);
+  }
+
+  // --- NOVA FUNÇÃO DE SEGURANÇA ---
+  function tentarAbrir(indice, senhaCorreta, idStatus) {
+    // Pergunta a senha
+    const senhaDigitada = prompt("Esta aula está bloqueada. Digite a senha de acesso:");
+
+    // Verifica se a senha está certa
+    if (senhaDigitada === senhaCorreta) {
+      // Se acertou:
+      alert("Acesso Liberado! 🔓");
+      
+      // Muda o status visualmente na tabela para "Disponível"
+      if(idStatus) {
+        document.getElementById(idStatus).innerText = "✅ Disponível";
+        document.getElementById(idStatus).style.color = "green";
+      }
+
+      // Abre a aula
+      abrirAula(indice);
+    } else {
+      // Se errou:
+      alert("Senha incorreta! 🚫 Aguarde o professor liberar o acesso.");
+    }
+  }
+</script>
+
+</body>
+</html>
