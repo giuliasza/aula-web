@@ -81,34 +81,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Introdução + HTML</td>
-          <td>✅ Concluída</td>
-          <td><button class="btn-aula" onclick="abrirAula(0)">Abrir Aula 1</button></td>
-        </tr>
-        <tr>
-        <td>2</td>
-        <td>CSS (Estilizando o Portfólio)</td>
-        <td id="status-aula-2">🔒 Bloqueada</td> <td>
-        <button class="btn-aula btn-locked" onclick="tentarAbrir(19, 'css2026', 'status-aula-2')">
-        <i class="fas fa-lock"></i> Acessar
-        </button>
-        </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>JavaScript (Interatividade)</td>
-          <td>📅 Em breve</td>
-          <td><button class="btn-aula" disabled style="background:#ccc; cursor:not-allowed;">Aguarde</button></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Publicação e Portfólio</td>
-          <td>📅 Em breve</td>
-          <td><button class="btn-aula" disabled style="background:#ccc; cursor:not-allowed;">Aguarde</button></td>
-        </tr>
-      </tbody>
+  <tr>
+    <td>1</td>
+    <td>Introdução + HTML</td>
+    <td>✅ Concluída</td>
+    <td><button class="btn-aula" onclick="abrirAula(0)">Abrir Aula 1</button></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>CSS (Estilizando o Portfólio)</td>
+    <td>✅ Aula Atual</td>
+    <td><button class="btn-aula" onclick="abrirAula(18)">Abrir Aula 2</button></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>JavaScript (Interatividade)</td>
+    <td>✅ Disponível</td>
+    <td><button class="btn-aula" onclick="abrirAula(35)">Abrir Aula 3</button></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Publicação e Portfólio</td>
+    <td>✅ Disponível</td>
+    <td><button class="btn-aula" onclick="abrirAula(45)">Abrir Aula 4</button></td>
+  </tr>
+</tbody>
     </table>
   </div>
 </section>
@@ -489,17 +486,14 @@ header {
 <script src="plugin/highlight/highlight.js"></script>
 
 <script>
-  // Inicializa o Reveal.js
   const deck = new Reveal(document.querySelector('.reveal'), {
     embedded: true,
     slideNumber: 'c/t',
     hash: false,
     plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
   });
-
   deck.initialize();
 
-  // Função principal para abrir os slides (uso interno)
   function abrirAula(indice) {
     const areaSlides = document.getElementById('slides');
     areaSlides.style.display = 'block';
@@ -507,28 +501,9 @@ header {
     deck.slide(indice);
   }
 
-  // --- NOVA FUNÇÃO DE SEGURANÇA ---
-  function tentarAbrir(indice, senhaCorreta, idStatus) {
-    // Pergunta a senha
-    const senhaDigitada = prompt("Esta aula está bloqueada. Digite a senha de acesso:");
-
-    // Verifica se a senha está certa
-    if (senhaDigitada === senhaCorreta) {
-      // Se acertou:
-      alert("Acesso Liberado! 🔓");
-      
-      // Muda o status visualmente na tabela para "Disponível"
-      if(idStatus) {
-        document.getElementById(idStatus).innerText = "✅ Disponível";
-        document.getElementById(idStatus).style.color = "green";
-      }
-
-      // Abre a aula
+  // Função simplificada sem senha
+  function tentarAbrir(indice) {
       abrirAula(indice);
-    } else {
-      // Se errou:
-      alert("Senha incorreta! 🚫 Aguarde o professor liberar o acesso.");
-    }
   }
 </script>
 
